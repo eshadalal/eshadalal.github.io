@@ -41,3 +41,22 @@ ul.posts {
 ul.posts li {
     list-style: none;
 }
+
+<style> 
+div {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+@keyframes example {
+  from {background-color: blue;}
+  to {background-color: black;}
+}
+</style>
+</head>
+<body>
+
+<div></div>
