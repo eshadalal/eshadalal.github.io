@@ -185,8 +185,42 @@ img2 {
   float: bottom;
   float: right;    
   margin-top: 22%;
-  margin-left: -40%;
+}
 
+.row {
+  margin: 20px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  display: none; 
+}
+
+.content {
+  background-color: white;
+  padding: 20px;
+}
+
+.show {
+  display: block;
+}
+
+.gallery { 
+  max-width: 1050px;
+  margin: auto;
+  height: 800px;
+  padding: 75px;
+}
+
+img:hover {
+    cursor: pointer;
+    opacity: 0.7;
+
+}
+
+a1 { 
+  color:white;
 }
 
 </style>
@@ -220,18 +254,18 @@ img2 {
 
     <section>
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" class="card__image" alt="brown couch" />
+        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1658&q=80" class="card__image"/>
         <div class="card__content">
-          <time datetime="2021-03-30" class="card__date">30 März 2021</time>
-          <span class="card__title">Duis autem vel eum iriure dolor in hend in vulputate<span>
+          <time datetime="2021-03-30" class="card__date">February 1 2022</time>
+          <a href="https://eshad.medium.com/what-ive-learned-from-coding-and-how-i-ve-learned-to-learn-f93acede4ca5"><span class="card__title">What I've learned from coding and how I've learned to learn<span></a>
         </div>
       </div>
     
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" class="card__image" alt="brown couch" />
+        <img src="https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" class="card__image" />
         <div class="card__content">
-          <time datetime="2021-03-30" class="card__date">30 März 2021</time>
-          <span class="card__title">Duis autem vel eum iriure dolor in hend in vulputate<span>
+          <time datetime="2021-03-30" class="card__date">February 1 2022</time>
+          <a href="medium.com"><span class="card__title">Experiencing high school in the midst of a global pandemic<span></a>
         </div>
       </div>
     
@@ -242,27 +276,88 @@ img2 {
       <section>
       
         <div class="btn-group">
-          <button onclick="myFunction()">All</button>
-          <button onclick="myFunction()">Photo and Video</button>
-          <button onclick="myFunction()">Writing</button>
-          <button onclick="myFunction()">Code</button>
+          <button onclick="filterSelection('photo')">Photo and Video</button>
+          <button onclick="filterSelection('writing')">Writing</button>
+          <button onclick="filterSelection('code')">Code</button>
         </div>
-        
-        <div id="myDIV">
-          </div>
-        
+
           <script>
-            function myFunction() {
-              var x = document.getElementById("myDIV");
-              if (x.style.display === "none") {
-                x.style.display = "block";
-              } else {
-                x.style.display = "none";
-              }
-            }
-            </script>
-            
-            
+
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+
+var btnContainer = document.getElementById("btn-group");
+var btns = btnContainer.getElementsByClassName("btn-group");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
+</script>
+          
+<div class="row">
+  <div class="column photo">
+    <div class="content">
+      <a href="https://unsplash.com/@eshad"><img src="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80" style="width:100%"></a>
+    </div>
+  </div>
+    <div class="column photo">
+      <div class="content">
+      <a href="https://www.youtube.com/channel/UCcIBeUFCWWcmucNbpXHvBwA"><img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" style="width:100%"></a>
+    </div>
+  </div>
+  
+  <div class="column writing">
+    <div class="content">
+      <a href="https://eshad.medium.com/has-big-data-changed-our-lives-for-the-better-5f855c519b32"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1748&q=80" style="width:100%"></a>
+    </div>
+  </div>
+
+  <div class="column code">
+    <div class="content">
+      <a href="https://github.com/eshadalal/travelblog"><img src="https://images.unsplash.com/photo-1612686635542-2244ed9f8ddc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="width:100%"></a>
+    </div>
+  </div>
+  <div class="column code">
+    <div class="content">
+      <a href="https://github.com/eshadalal"><img src="https://images.unsplash.com/photo-1643499725626-f239f90340cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80" style="width:100%"></a>
+    </div>
+  </div>
+
       </section>
   
     <style>
@@ -585,7 +680,6 @@ i:hover{
       
       
 <a href="https://twitter.com" class="fa fa-twitter"></a>
-<a href="https://facebook.com" class="fa fa-facebook"></a>
 <a href="https://linkedin.com/in/esha-dalal" class="fa fa-linkedin"></a>
 <a href="mailto:eshasdalal@gmail.com" class="fa fa-envelope"></a>
 
@@ -597,3 +691,4 @@ i:hover{
   
   
 </html>
+
