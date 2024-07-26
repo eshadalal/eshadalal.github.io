@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esha Dalal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff; /* White background */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            max-width: 1200px; /* Set a maximum width for the image */
+            margin: auto; /* Center the container horizontally */
+        }
+
+        .image {
+            width: 100%; /* Full width of the container */
+            height: 80vh; /* Increased height to make the image longer */
+            border-radius: 15px; /* Rounded corners */
+            object-fit: cover; /* Ensure the image covers the container */
+            display: block;
+            opacity: 0; /* Initially hide the image */
+            animation: fadeInZoom 1.5s ease-out forwards; /* Animate the image */
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black; /* Black text */
+            font-size: 2rem; /* Adjust size as needed */
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            padding: 10px; /* Optional padding for better readability */
+            background-color: transparent; /* Removed background color */
+        }
+
+        .learn-more-button {
+            position: absolute; /* Position button absolutely */
+            top: 60%; /* Position button below text-overlay */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+            padding: 8px 30px; /* Padding for a more rectangular button */
+            background-color: #1f1f1f8f; /* Light black background */
+            color: white; /* White text */
+            border: none;
+            border-radius: 8px; /* Rounded edges */
+            font-size: 0.7rem; /* Smaller font size */
+            font-family: 'Roboto', sans-serif; /* Same Roboto font */
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            text-decoration: none; /* Remove underline from text */
+            width: auto; /* Adjust width to fit content */
+            transition: opacity 0.3s ease-in-out; /* Smooth transition effect */
+        }
+
+        .learn-more-button:hover {
+            background-color: black; /* Darker background on hover */
+        }
+
+        @keyframes fadeInZoom {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 41%; }
+}
+
+@keyframes cursor {
+    from { border-right-color: transparent; }
+    to { border-right-color: black; }
+}
+
+.text-overlay-small {
+    position: absolute;
+    top: 56.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 10px;
+    background-color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.5px solid black; /* Cursor effect */
+    animation: typing 2s steps(18, end) 1s 1 normal both, cursor-blink 0.75s step-end 4s 1;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1483631224226-a219224bb76e?q=80&w=2052&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Esha Dalal" class="image">
+        <div class="text-overlay">I'm Esha Dalal.</div>
+        <div class="text-overlay-small">
+            <span id="typing-text">full-time programmer, part-time photographer, lifelong traveler</span>
+        </div>
+        <a href="main.html" class="learn-more-button">Start here</a> 
+    </div>
+</body>
+</html>
